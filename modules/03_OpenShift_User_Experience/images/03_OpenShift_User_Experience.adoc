@@ -1,0 +1,401 @@
+:labname: Resource Exploration
+// include::../tools/00_0_Lab_Header_Template.adoc[]
+
+== {labname} Lab
+
+.シナリオ
+
+このラボでは、Red Hat^(R)^ OpenShift^(R)^ Container Platformでアプリケーションをデプロイするデモを行います。 
+
+.目標
+* Web コンソールのパースペクティブ(DeveloperとAdministrator)を理解する。
+* プロジェクトの作成
+* Gitリポジトリからアプリケーションをビルドしてデプロイする
+* ウェブコンソールのトポロジービューに慣れる
+* アプリケーションのグループ化の一部としてリソースを関連付ける
+* 配置されたリソースの管理者ビューを理解する
+
+// include::../tools/00_0_Lab_Setup_Template.adoc[]
+
+[[labexercises]]
+
+== Developer パースペクティブ
+
+OpenShift Container PlatformのWebコンソールには、Administrator パースペクティブとDeveloperパースペクティブの2つのパースペクティブがあります。Developerパースペクティブでは、開発者のユースケースに特化したワークフローを提供します。
+
+. Developerパースペクティブに切り替えます。 アプリケーションを作成するためのオプションを持つTopologyビューが表示されます。
++
+image:images/03_1_developer_perspective.png[]
+
+=== Project 作成
+
+プロジェクトによって、あるユーザーのコミュニティが他のコミュニティから切り離された状態でコンテンツを整理・管理できます。プロジェクトはKubernetesネームスペースに対するOpenShiftの拡張で、ユーザーのセルフプロビジョニングを可能にする機能を追加したものです。 ほとんどの場合に互換性があります。
+
+. *Project* ドロップダウンメニューをクリックすると、利用可能なすべてのプロジェクトのリストが表示されます。 *Create Project* を選択します。
++
+image:images/03_1_create_project_developer_perspective.png[]
++
+NOTE: 異なるプロジェクトはそれぞれに対応した異なるユーザー権限とクォータを持つことができます
+
+. *Name* を `testworkshop` として、プロジェクトを作成します。
+
+=== アプリケーションデプロイメント
+
+Web コンソールの Developer パースペクティブでは、Add ビューからアプリケーションおよび関連サービスを作成し、それらを OpenShift Container Platform にデプロイするための以下のオプションが提供されます。
+
+次の手順では、Developerパースペクティブでアプリケーションを作成するための *Import from git* オプションについて見ていきます。 GitHubにある既存のコードベースを利用して、以下のようにOpenShift Container Platform上でアプリケーションを作成、構築、デプロイします。
+
+. Add ビューで From Git をクリックし、Import from Git フォームを表示します。
++
+image:images/03_1_add_application_from_git.png[]
++
+. Git セクションで、アプリケーションの作成に使用するコードベースの Git リポジトリー URL を入力します。
++
+[source, plain]
+----
+https://github.com/RedHatGov/openshift-workshops.git
+----
++
+image:images/03_1_import_from_git_form_url.png[]
++
+. ``を選択し、
+. Builder セクションで、URL の検証後に、適切なビルダーイメージが検出され、スターのマークが付けられ、自動的に選択されます。https://github.com/sclorg/nodejs-ex Git URL の場合、Node.js ビルダーイメージがデフォルトで選択されます。ビルダーイメージが自動検出されていない場合は、ビルダーイメージを選択します。必要に応じて、Builder Image Version のドロップダウンリストを使用してバージョンを変更できます。
+
+. General セクションで、以下を実行します。
+.. *Application* フィールドに、アプリケーションを分類するために一意の名前 (nodejs-ex-app など) を入力します。アプリケーション名が namespace で一意であることを確認します。
+.. *Name* フィールドに、このアプリケーション用に作成されたリソースを分類するために一意な名前を入力します。これは Git リポジトリー URL をベースとして自動的に設定されます。
++
+注: リソース名は namespace で一意である必要があります。エラーが出る場合はリソース名を変更します。
++
+. *操作*: *Resources* セクションで、デフォルトのリソース *Deployment* を選択します 
+. *説明* Deployment は単純な Kubernetesスタイルのアプリケーションを作成します。 "Deployment Config" は OpenShiftスタイルのアプリケーションを作成します。 "Knative Service" はマイクロサービスを作成します。
++
+注: Knative Service オプションは、Serverless Operator がクラスターにインストールされている場合にのみ、Import from git 形式で表示されます。詳細は、OpenShift Serverless のインストールについてのドキュメントを参照してください。
++
+. *説明*: Advanced Options セクションでは、Create a route to the application がデフォルトで選択されるため、公開されている URL を使用してアプリケーションにアクセスできます。アプリケーションをパブリックルートに公開したくない場合は、チェックボックスをクリアできます。
+. *操作*: Create をクリックして、アプリケーションを作成し、Topology ビューでビルドのステータスを確認します。
+
+
+=== Topology ビュー
+
+. *説明*: Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
++
+image:images/03_1_topology_view_a.png[]
++
+[NOTE]
+====
+*操作*: グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。
+
+image:images/03_1_topology_view_switch_view.png[width=50%]
+====
++
+. *説明*: Developer パースペクティブの左側のナビゲーションパネルを使用すると、Topology ビューに移動できます。アプリケーションを作成したら、Topology ビューに自動的に移動します。ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。
+. *説明*: Podの状態やフェーズは、色で区別され、ツールチップで次のように表示されます。Running (image:images/03_1_pod_running.png[]), Not Ready (image:images/03_1_pod_not_ready.png[]), Warning (image:images/03_1_pod_warning.png[])、Failed(image:images/03_1_pod_failed.png[])、Pending (image:images/03_1_pod_pending.png[])、Succeeded(image:images/03_1_pod_succeeded.png[])、Terminating(image:images/03_1_pod_terminating.png[])、またはUnknown(image:images/03_1_pod_unknown.png[])のいずれかになります。 Podの状態の詳細については、Kubernetesのドキュメントを参照してください。
+
+. *説明*: アプリケーションを作成し、イメージがデプロイされると、ステータスは Pending と表示されます。アプリケーションをビルドすると、Runningと表示されます。
++
+image:images/03_1_topology_nodejs_pod_running.png[width=50%]
+
+* 以下のように、異なるタイプのリソースオブジェクトのインジケーターと共に、アプリケーションリソース名が追加されます。
+** *D*: Deployment
+** *DC*: Deployment Configs
+** *SS*: StatefulSet
+** *DS*: Daemonset
+
+注: OpenShift Deployment Configsに加えて、Kubernetes _Deployments_ もサポートされていることに注意します。 Kubernetes Deploymentは、Deployment Configs で利用可能な機能の多くを共有しており、OpenShift Container Platform 4.5からはデフォルトのデプロイメントリソースオブジェクトとなっています。
+
+=== オーバービュー・パネルの操作
+
+. *説明*: Deploymentの多くの機能にアクセスできるOverviewパネルがあります
+.. *操作*: *D nodejs-ex* をクリックして Overviewパネルを開きます。
+* nodejs-ex Deploymentの詳細はこちらで確認できます。 これには、Details、Resources、および Monitoring が含まれます。
+.. *操作*: Overviewパネルの *Details* タブをクリックします。
++
+image:images/03_1_topology_deployment_side_panel.png[width=50%]
++
+** *説明* 
+*** ポッドのレプリカ数はここで管理できます。上下の矢印を使用して Pod をスケーリングし、アプリケーションのインスタンス数の増減を手動で調整します。サーバーレスアプリケーションの場合、Pod は、チャネルのトラフィックに基づいてアイドルおよびスケールアップ時に自動的にゼロにスケーリングされます。
+*** Podの設定の様々な側面とクリック可能なコンテキストヘルプがあります。アプリケーションの ラベル、アノテーション および ステータス を確認します。
+. *操作*: *Resources* タブをクリックします。
++
+image:images/03_1_topology_overview_panel_resources.png[width=50%]
+
+** *説明* 
+***  Deployment により いくつかの *Resources* が作成され、その状態がここに表示されています。
+***  これらは Deploymentに関連するリソースの一部です。
+**** *Pods* は、OpenShift アプリケーションの基本単位であり、そのログにアクセスすることができます。
+**** *Builds* は、ソースコードをコンパイルして _images_ にパッケージ化するために作成されました。 ステータスやアクセスログを確認し、必要に応じて新しいビルドを開始することができます。
+**** *Services* は、Pod用に作成され、割り当てられたポートが一覧表示されます。
+**** *Routes* は、Podsへの外部からのアクセスを許可するために作成されたもので、アクセスするためのURLが記載されています。
+. *操作*: オーバービュー・パネルの *Monitoring* タブをクリックします。
+** このページには様々な *Events* と *Metrics* の情報が表示されます。
+. *操作*: *X* または Topologyビューフィールドの任意の場所をクリックして オーバービュー・パネルを閉じます。
+
+注: サーバーレス アプリケーションの場合、Resources タブには、そのコンポーネントで使用されているリビジョン、ルート、および構成に関する情報が表示されます。
+
+=== アプリケーションやコンポーネントとの相互作用
+
+*説明*: Web コンソールの Developer パースペクティブにある Topology ビューは、アプリケーションとコンポーネントを操作するための以下のオプションがあります。
+
+. *操作*: Podの左下のアイコンにカーソルを合わせると、最新のビルド名とそのステータスが表示されます。
+.. Podのビルドステータス表示:
++
+image:images/03_1_topology_build_status.png[width=50%]
++
+.. *説明*: アプリケーションビルドのステータスは次のように表示されます。 New、Pending、Running、Completed、Failed、および Canceled
++
+. *操作*: Podの右下のアイコンにカーソルを合わせると、ソースコードへのアクセスが表示されます。
+.. *説明*: Code Ready Workspacesでソースコードを開き、アプリケーションコードを編集できます。
++
+注: この機能は、From Git、From Catalog、およびFrom Dockerfileオプションを使用してアプリケーションを作成する場合にのみ使用できます。
++
+image:images/03_1_toplogoy_edit_code.png[width=50%]
++
+. *操作*: Podの右上のアイコンにカーソルを合わせると、パブリックURLが表示されます。
+..  アプリケーションURLが利用可能
++
+image:images/03_1_topology_open_url.png[width=50%]
++
+. *説明*: Topologyビューで多くのアプリケーションを表示しやすくするために、キーボードとマウスのショートカットが用意されています。
+.. *操作*: 画面の右上にリストされている View shortcuts メニューを使用して、Topologyビューのコンポーネントを操作します。
++
+image:images/03_1_topology_view_shortcuts.png[width=50%]
++
+. *説明*: すべてのアプリケーションとそのリソースをListビューで表示したい場合があります。
+.. *操作*: Listビューアイコンを使用してすべてのアプリケーションのリストを表示し、Topologyビューアイコンを使用してTopologyビューに戻ります。
++
+image:images/03_01_topology_list_view.png[width=50%]
+
+=== アプリケーション内の複数のコンポーネントのグループ化
+
+*説明*: Add ページを使用して、複数のコンポーネントまたはサービスをプロジェクトに追加し、Topology ページを使用してアプリケーショングループ内のアプリケーションとリソースをグループ化できます。以下の手順では、MongoDB データベースサービスを Node.js コンポーネントを使用して既存のアプリケーションに追加します。
+
+. *操作*: Add ビューに移動して Database オプションを選択し、Developer Catalogを確認します。
++
+image:images/03_1_application_grouping_a.png[]
+
+.. *説明*: このカタログには、アプリケーションにコンポーネントまたはサービスとして追加できる複数のオプションがあります。
+
+. *操作*:  *Type: Template* チェックボックスを選択して、OpenShiftテンプレートベースのカタログアイテムを表示します。
++
+image:images/03_1_application_grouping_b.png[]
++
+.. *操作*: (MongoDB Ephemeralではなく)MongoDBオプションをクリックして、サービスの詳細を表示します。
+.. *操作*: *Instantiate Template* をクリックして、MongoDB サービスの詳細が自動的に設定されたテンプレートを表示します。
+.. *操作*: ページの一番下までスクロールし、*Create* をクリックしてサービスを作成します。
+.. *操作*: MongoDBのデプロイを監視するため、トポロジビューに自動的に移動するはずです。
+Podサークルの色がどのように変化してステータスを示すかに注意してください。
+ポッドにカーソルをあわせると、ステータスが表示されます。
+
+. *操作*: 左側のナビゲーションパネルで、 *Topology* をクリックして、プロジェクトにデプロイされたMongoDBサービスを確認します。
+.. *操作*: MongoDBサービスを既存のアプリケーショングループに追加するには、*Shift* キーを押しながら、 `mongodb` ポッドを選択してアプリケーションにドラッグします。 MongoDBサービスが既存のアプリケーショングループに追加されます。
++
+//image:images/03_1_application_grouping_done.png[]
+image:images/03_1_application_grouping_animate_gif.gif[]
++
+..  アプリケーショングループ (nodejs-ex-app) には、 *A* というラベルのついた楕円形のラベルがついています。
+.. *説明*: Shiftキーを押しながらコンポーネントをドラッグしてアプリケーショングループに追加すると、必要なラベルがコンポーネントに自動的に追加されます。
+. *操作*: MongoDB *DC mongodb* をクリックしてオーバービュー・パネルを開き、 *Details* タブをクリックします。
++
+image:images/03_1_application_grouping_labels.png[]
++
+.. ラベル `app.kubernetes.io/part-of=nodejs-ex` が Labels セクションに追加されます。
+
+[NOTE]
+====
+アプリとデータベースを統合するには、Node.jsアプリケーションとMongoDBデータベースを別の場所で構成する必要があります。 OpenShiftの将来のリリースでは、オペレーターに基づくサービスバインディングに注目してください。
+====
+
+=== Developerパースペクティブを使用した Monitoring ビューの探索
+
+*説明*: Red Hat は最近、モニタリング機能をウェブコンソールに統合しました。プロジェクト全体のメトリクスとイベントについてはこちらをご覧ください。
+
+. *操作*: 左側のパネルで *Monitoring* をクリックします。
++
+image:images/03_1_developer_perspective_monitoring.png[]
++
+* *説明* 
+** これはテクノロジープレビュー機能であり、Grafanaに依存していた機能を置き換えるものです。
+** これらの機能は、上記で選択したプロジェクトにのみ適用されます。
+. *操作*: *Dashboard* タブをクリックする。
+* Dashboardタブは、プロジェクトのメトリクスをまとめて表示します。
+. *操作*: *Metrics* タブをクリックする。
+* Metricsタブは、Prometheus Metricsのカスタムグラフを作成することができます。
+. *操作*: *Events* タブをクリックする。
+* Eventsタブは、報告されたイベントが一つのストリームとして表示され、フィルターできます。
+
+
+== Deployments と Deployment Configs
+
+=== Administrator パースペクティブへの切り替え
+
+. *説明*: 多くの高度な機能は、Administrator パースペクティブからのみ使用できます。
+.. *操作*: パースペクティブ ドロップダウンボックスから、 *Administrator* を選択します。
++
+image:images/03_1_admin_deployments.png[width=50%]
+
+== Deployments と Deployment Configs
+
+. *説明*: OpenShift Container Platform の _Deployment_ および _DeploymentConfig_ は、一般的なユーザーアプリケーションに対する詳細な管理を行うためのよく似ているものの、異なる 2 つの方法を提供します。これらは、以下の個別の API オブジェクトで構成されています。
+* アプリケーションの特定のコンポーネントの必要な状態を記述する、Pod テンプレートとしての DeploymentConfig または Deployment。
+* DeploymentConfig には 1 つまたは複数の ReplicationController が含まれ、これには Pod テンプレートとしての DeploymentConfig の特定の時点の状態のレコードが含まれます。同様に、Deployment には ReplicationController を継承する 1 つ以上の ReplicaSet が使用されます。
+* アプリケーションの特定バージョンのインスタンスを表す 1 つ以上の Pod。
+
+. *操作*: 左側のナビゲーションで、 *Workloads -> Deployment Configs* をクリックします。
+** 各DeploymentConfigの右側にあるメニューを選んで、必要なDeploymentConfigの新しいロールアウトを開始できます。
++
+image:images/03_1_admin_dc_menu.png[]
+
+. *操作*: リスト内の `mongodb` DeploymentConfig をクリックすると、 *Deployment Config Details* ページが開きます。
++
+image:images/03_1_admin_dc_details.png[]
++
+* *説明* 
+** 円はPodのデプロイメント状況を示します。
+** Podの _必要数_ (レプリカ) は円の横にある上下の矢印をクリックすることで、このパネルから簡単に増減できます。
+** 以下を参照できます
+*** *Latest Version* Deployment Config の 最新バージョン。
+*** *Message* 現在の Deploymentが開始された理由を示す最新のメッセージ。
+*** ページのさらに下には、*Containers* のリスト、起動元のイメージ、リソースの制限、リッスンするポートが表示されています。
+*** *Conditions* のリストは、このDeployment Configに関連した主なイベントを表します。 `NewReplicationControllerAvailable` のような *Reason* や、`replication controller "mongodb-1" successfully rolled out` といった *Message* が含まれます。
+** ここでも右上の *Actions* メニューをクリックして *Start Rollout* を選択することで新しい Deployment を開始することができます。
+
+. *操作*: *Environment* タブを選ぶ
++
+image:images/03_1_admin_dc_environment.png[]
++
+* *説明*: *Environment* タブは Deployment の環境変数を表示します。
+** 環境変数は、環境変数は、ユーザー名、データベースサービス名など、コンテナーとPod内のさまざまなパラメーターを設定するために使用されます。
+** 独自の環境変数を追加して、アプリケーションのコードからそれを呼び出せます。
+
+. *操作*: *Events* タブを選択します。
++
+image:images/03_1_admin_dc_events.png[]
++
+* *説明* *Events* タブには、Deployment に関連するイベントが表示されます。
+** イベントリストは、Deploymentで何か問題が発生したかどうかを確認したり、イベントの連鎖を追跡したりするために便利な方法です。
+
+. *操作*: 左側で、 *Workloads* -> *Replication Controllers* を選択します。
+* *説明* DeploymentConfigs は、 _replication controllers_ を作成します。
+. *操作*: Replication Controller の名前、 `mongodb-1` をクリックすると、  *Replication Controller Details* ページが開きます。
++
+image:images/03_1_admin_rc_pod_selector.png[]
++
+* *説明*
+** `mongodb-1` Replication Controller は、Deploymentのバージョンと、そのDeploymentを作成したDeployment Configの名前を表す Pod セレクターを持っています。
+** Replication Controller は実際にロールアウトされたPodの数を管理し、Deployment Configで要求された数に維持します。
+
+注: *説明* ReplicationControllers と ReplicaSets の関係は、 OpenShift Deployment Configs と Kubernetes Deployments の関係に似ています。これらは全て OpenShift でサポートされています。
+
+
+=== Deployments の Network Resource
+
+. *操作*: 左側のメニューから、 *Networking -> Services* を選びます。
+** *説明* プロジェクトの *Services* ページには、そのプロジェクトに現在存在する全てのサービスが表示されます。
+** *Location* はサービスがPodを表すために使用する、永続的な *internal* IP アドレスとポートです。
+. *操作*: *mongodb* サービスをクリックします。
++
+image:images/03_1_admin_services_details.png[]
+**  *Service Address* と *Service Port Mapping* は、前の画面での *Location* で見た Service がlistenしているアドレスとポートですが、サービスのポートに対応するPodのポートを明らかにします。
+** *Pod Selector* は Serviceの一部とみなされるPodが必ず持っているラベルです。
+
+. *操作*: 左側のメニューから、  *Networking -> Routes* を選びます。
+* *説明* プロジェクト の *Routes* ページはプロジェクトに現在存在する全ての Route を表示します。
+** Route 群、それらのLocation、それらが表すサービスのリストがあり、
+** `nodejs-ex` というラベルのついた Route 情報の行があります。
+** この行を読むと `nodejs-ex` という Route があり、これも `nodejs-ex` という名前のサービスを公開していることがわかります。
+** URLは *Route* が外に見せているものです。
++
+image:images/03_1_admin_routes.png[]
+
+== ビルドページの探索
+
+このセクションでは、ビルドについてUIで利用可能な情報を確認していきます。
+
+. *操作*: 左側のメニューから、 *Builds -> Build Configs* を選びます。
+* *説明* *Builds Configs* ページは、Projectにある全ての BuildConfig を表示します
+
+. *操作*: リストから `nodejs-ex` BuildConfig をクリックすると、 *Build Config Details* ページが開きます。
+** 右上の *Actions* メニューをクリックしてから *Start Build* を選択すると、新しいビルドを開始できます。
+** ビルドのソースコードが保存されている *Git Repository* を確認できます。
+
+. *操作*: *Bulds* タブを選択すると、Buildのリストが開きます。
+* *説明*  _Project_ の *Builds* ページはそのプロジェクトでの全てのビルドを表示します。
+** プロジェクト内のそれぞれのビルドの状態と完了時刻を確認できます。
+. *操作*: リストの中のビルドを1つ選択します。
++
+* *説明* _アプリケーション_ の *Build Details* ページでは以下を参照できます。
++
+image:images/03_1_admin_build_details.png[]
++
+** このビルドで利用された設定は *Details* タブで確認できます。
+** ビルドで使用されたリソース使用率の統計は、利用可能な場合このページにグラフ形式で表示されます。
+** ビルドの *Owner* を確認できます。この場合、Ownerはさきほど確認した `nodejs-ex` BuildConfigです。
+** 右上の *Actions* メニューをクリックして *Rebuild* を選択することでこのビルドをリビルドすることができます。
+** ビルドの状態を確認し、ビルドがトリガーされた理由を確認できます。
+** 利用されたベースイメージや出力イメージの名前など、ビルドに使用された設定を確認できます。
+
+. *操作*: *Logs* タブを選択します
+* *説明*  *Logs* タブはビルドのログを表示します。
+* *説明*  他の例では、コンテナのコードの依存関係や他の設定ログを見ることができます。
+**  この例では、コンテナへソースコードリポジトリのクローンまたはダウンロードが行われます。
+**  完成したイメージがプロジェクト名で統合レジストリに自動的にプッシュされることがわかります。
+
+== ポッドの探索
+
+. *操作*: 左側のメニューから、 *Workloads -> Pods* を選びます
+* *説明* プロジェクトの *Pods* ページは、プロジェクトの中で現在実行中の全てのPodを表示します。
+** `Running`, `Pending` などコンテナの状態を確認することができます。
+**  *Ready*  列は Readiness チェックにもとづいたコンテナ内アプリケーションの状態が表示されます。
+
+. *操作*: `mongodb-XXXXX` Pod をリストから選びます。
+* *説明* それぞれの *Pod* ページでは以下が表示されます。
+**  *Pod* セクション
+*** *Memory Usage*, *CPU Usage*, *Filesystem* のグラフ
++
+image:images/03_1_admin_pod_details.png[]
+*** Podのステータスとそれをホストする OpenShift ノード
+** *Containers* セクションでは、, イメージ名とコンテナの状態を含む情報が表示されます
+
+. *操作*: `mongodb` という名前のコンテナをクリックして *Container Details* ページを開く。
+** mongodb アプリケーションコンテナの *Readiness Probe* と *Liveness Probes* を確認します。
+** mongodb アプリケーションコンテナの *Resource Requests* と *Resource Limits* を確認します。
+
+. *操作*: ブラウザの *戻る* をクリックして、 *Pod Details* ページに戻る。
+* *説明*
+** *Volumes* セクションに表示される情報は、名前、タイプ、権限など。
+**  現在、2つのボリュームがマウントされています。
+*** mongodb-data ボリュームは PVC *mongodb-data* にバインドされており、 Read/Writeが可能です。
+*** default-token *Secret* ボリュームは バインドされており、 読み込み専用です。
+
+. *操作*: *Logs* タブを選択します
+* *説明* *Logs* タブは Podのログを表示します。
+** Podのメッセージはここに表示され、更新されるにしたがって追跡することができます。
+** 更新によるログの出力を一時停止および再開することができます。
+
+. *操作*: *Terminal* タブを選択します
+* *説明*  *Terminal* タブでは Pod 内の任意のコンテナ内で端末を使えます。
+** デバッグやテストのためにコンテナ内でコマンドを実行することができます。
+
+. *操作*: *Events* タブを選択します
+* *説明*  *Events* タブはPodに関連したイベントを表示します。
+** このリストはPodのDeploymentで何かがおかしいかを探したり、イベントの連鎖を追跡したりするために使えます。
+
+== 環境のクリーンアップ
+
+他のデモンストレーションを実施する前に、 OpenShift Container Platform の webコンソールのホームページへ行き、プロジェクトを削除しましょう。
+
+
+== OperatorHubからOpenShiftパイプラインのインストール
+
+
+
+
+他のデモンストレーションを実施する前に、 OpenShift Container Platform の webコンソールのホームページへ行き、プロジェクトを削除しましょう。
+
+. OpenShiftパイプラインをインストール
+* 管理者パースペクティブの下の左側のメニューから、Operators → OperatorHubに移動します。
+* 検索ボックスでパイプラインを検索し、 OpenShiftPipelinesOperatorをクリックします。
++
+image:images/03_100_prerequisites_operatorhub.png[]
++
