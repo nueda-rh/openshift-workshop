@@ -55,7 +55,7 @@
   ```
   nationalparks
   ```
-  
+
 ![設定内容](./images/04_93_nationalparks-configure-service1.png)
 <div style="text-align: center;">設定内容</div>
 
@@ -272,8 +272,8 @@ TaskとClusterTaskには、実行するステップが含まれています。Cl
 * **Developer Perspective内で、左側のメニューに移動し、[ Pipeline ]をクリックしてから、 nationalparks-pipelineをクリックします。**
 * **右上の[アクション]リストから、[開始]をクリックします。**
 
-![Project作成](./images/04_102_devops-pipeline-start-1.png)
-<div style="text-align: center;"></div>
+![nationalparks-pipeline2](./images/04_102_devops-pipeline-start-1.png)
+<div style="text-align: center;">nationalparks-pipeline2</div>
 
 <br>
 
@@ -288,8 +288,8 @@ TaskとClusterTaskには、実行するステップが含まれています。Cl
   * ワークスペース → app-sourceで、リストからPVCを選択し、次にapp-source-pvcを選択します。
 * [開始]をクリックして、パイプラインを実行します。
 
-![Project作成](./images/04_103_devops-pipeline-start-2.png)
-<div style="text-align: center;"></div>
+![nationalparks-pipeline3](./images/04_103_devops-pipeline-start-2.png)
+<div style="text-align: center;">nationalparks-pipeline3</div>
 
 <br>
 
