@@ -2,7 +2,7 @@
 
 このコンテンツは、PTP ワークショップ OpenShift基礎編で利用するハンズオンコンテンツです。実施前に、Red Hat OPENTLC 環境より、Hands-on 環境を払い出す必要があります。
 
-- 説明資料： [こちら](https://github.com/RH-OPEN/ptp-openshift/tree/main/slides/slides_20220630.zip)から、ダウンロードお願いします ※パスワード付き
+- 説明資料： [ダウンロード](https://github.com/RH-OPEN/ptp-openshift/raw/main/slides/slides_20220630.zip) ※パスワード付き
 - OPENTLC Catalog : Hands On with OpenShift 4.10
 - Web ドキュメント：　https://rh-open.github.io/ptp-openshift/
 
