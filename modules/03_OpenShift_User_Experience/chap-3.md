@@ -96,18 +96,6 @@ https://github.com/sclorg/nodejs-ex.git
 >
 > Knative Service オプションは、Serverless Operator がクラスターにインストールされている場合にのみ、Import from git 形式で表示されます。
 
-* **Route からアプリケーションにアクセスしてみてください。**
-
-![nodejs-ex アプリ](./images/03_2_import_from_git_form_url_result.png)
-<div style="text-align: center;">nodejs-ex アプリ</div>
-
-<br>
-
-> NOTE :
->
-> Advanced Options セクションでは、**Create a route to the application** がデフォルトで選択されるため、公開されている URL を使用してアプリケーションにアクセスできます。
-> アプリケーションをパブリックルートに公開したくない場合は、チェックボックスをクリアできます。
-
 ## Topology ビュー
 
 Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
@@ -154,7 +142,17 @@ Web コンソールのDeveloperパースペクティブにあるTopologyビュ�
 
 <br>
 
+* **Route からアプリケーションにアクセスしてみてください。**
 
+![nodejs-ex アプリ](./images/03_2_import_from_git_form_url_result.png)
+<div style="text-align: center;">nodejs-ex アプリ</div>
+
+<br>
+
+> NOTE :
+>
+> Advanced Options セクションでは、**Create a route to the application** がデフォルトで選択されるため、公開されている URL を使用してアプリケーションにアクセスできます。
+> アプリケーションをパブリックルートに公開したくない場合は、チェックボックスをクリアできます。
 
 ---
 ## アプリケーションデプロイメント その２ 
