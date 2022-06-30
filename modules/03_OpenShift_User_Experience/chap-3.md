@@ -11,6 +11,8 @@
 * デプロイしたアプリを、ウェブコンソールのトポロジービューを通して確認
 * OperatorHub から Operator をインストール
 
+
+---
 ## Developer パースペクティブ
 
 OpenShift Container PlatformのWebコンソールには、Administrator パースペクティブとDeveloperパースペクティブの2つのパースペクティブがあります。Developerパースペクティブでは、開発者のユースケースに特化したワークフローを提供します。
@@ -44,6 +46,7 @@ OpenShift Container PlatformのWebコンソールには、Administrator パー�
     プロジェクトが`test` に切り替わったことを確認します。
 
 
+---
 ## アプリケーションデプロイメント
 
 Web コンソールの Developer パースペクティブでは、Add ビューからアプリケーションおよび関連サービスを作成できます。OpenShift Container Platform にデプロイするためにはいくつかのオプションがあります（例 Dockerfile、Git、Catalog、YAMLなど）。
