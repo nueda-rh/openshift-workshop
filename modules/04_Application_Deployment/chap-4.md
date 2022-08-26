@@ -133,7 +133,7 @@ OpenShiftは、永続ボリューム要求リクエスト(PVC)を介してアプ
 Nationalparksバックエンド用のTektonパイプラインを作成します。
 
 * 右上の ＋ を選択します。
-![YAMLファイルから作成1](./images/04_100_add-tekton-pipelines.jpg)
+![YAMLファイルから作成1](./images/04_100_add-tekton-pipelines.png)
 <div style="text-align: center;">YAMLファイルから作成1</div>
 
 <br>
