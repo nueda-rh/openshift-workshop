@@ -269,7 +269,7 @@ Administrator パースペクティブから確認します。
 
 * **OpenShiftパイプラインをインストール**
     * 管理者パースペクティブの下の左側のメニューから、Operators → OperatorHubに移動します。
-    * 検索ボックスでパイプラインを検索し、 OpenShiftPipelinesOperatorをクリックします。
+    * 検索ボックスで`OpenShift Pipeline`を検索し、 表示された結果から`Red Hat OpenShift Pipelines`をクリックします。
 
 ![OperaterHub画面1](./images/03_100_prerequisites_operatorhub.png)
 <div style="text-align: center;">OperaterHub画面1</div>
@@ -290,7 +290,7 @@ Administrator パースペクティブから確認します。
 
 <br>
 
-* **数秒後、インストールは正常に完了し、[ステータス]列で確認でき、ステータスが[成功]であるかどうかを確認できます。**
+* **数秒後、以下のような画面が表示され、インストールが正常に完了します。また、Installed Operatorsの画面の[Status]列を確認することで、インストールステータスが[成功]であるかどうかを確認できます。**
 
 ![OperaterHub画面4](./images/03_103_prerequisites_operatorhub_pipelines_installed.png)
 <div style="text-align: center;">OperaterHub画面4</div>
