@@ -22,7 +22,7 @@
 
 * **アプリケーションのビルド**
 
-  * Developer パースペクティブで、左側のナビゲーションで[ +追加]をクリックし、[ Gitリポジトリ]セクションに移動して、[ Gitから]オプションを選択します。
+  * Developer パースペクティブで、左側のナビゲーションで[+Add]をクリックし、[Git Repository]セクションより `Import from Git` を選択します。
   ![Developerパースペクティブ](./images/04_90_nationalparks-show-add-options.png)
   <div style="text-align: center;">Developerパースペクティブ</div>
   <br>
@@ -31,7 +31,7 @@
   https://github.com/openshift-roadshow/nationalparks.git
   ```
 
-* **[インポートストラテジーの編集]をクリックし（3つのオプションがあります）、[ビルドイメージ]を選択します。**
+* **[Edit import Strategy]をクリックし（3つのオプションがあります）、`Builder Image` を選択します。**
 
 ![Developerパースペクティブ2](./images/04_91_nationalparks-import-strategy.png)
 <div style="text-align: center;">Developerパースペクティブ2</div>
@@ -43,15 +43,15 @@
 
 <br>
 
-* **ビルダーイメージとしてJavaが選択されていることを確認し、OpenJDK11を使用するにはバージョン `openjdk-11-ubi8` を選択してください。**
+* **[Builder Image]としてJavaが選択されていることを確認し、[Builder Image version] には `openjdk-11-ubi8` を選択してください。**
 
-* [全般]セクションまでスクロールし、下記を設定します。
+* [General] セクションまでスクロールし、下記を設定します。
 
-  * アプリケーション名 を入力します。
+  * Application Name :
   ```
   workshop
   ```
-  * 名前 を入力します。
+  * Name:
   ```
   nationalparks
   ```
@@ -61,7 +61,7 @@
 
 <br>
 
-* **[詳細なルーティングオプションを表示する] で `セキュアなルート` を選択。[TLS 終端] を `Edge` にします。**
+* **[Show Advanced Routing options] メニューを展開し、表示されたメニューより `Secure Root` を選択し、[TLS termination] を `Edge` にします。**
 
 ![Route設定1](./images/04_94_nationalparks-configure-service2.png)
 <div style="text-align: center;">Route設定1</div>
@@ -74,9 +74,9 @@
 <br>
 
 
-* **[作成]をクリックして送信します。**
+* ** `Create` をクリックして送信します。**
 
-* **トポロジビューでnationalparksエントリをクリックし、[リソース]タブの[ビルド]セクションで[ログの表示]をクリックして、ビルドログを参照します。**
+* **トポロジビューでnationalparksエントリをクリックし、[Resources]タブの[Builds]セクションで[View logs]をクリックして、ビルドログを参照します。**
 
 ![ビルドログ参照](./images/04_94_nationalparks-java-new-java-build.png)
 <div style="text-align: center;">ビルドログ参照</div>
@@ -89,7 +89,7 @@
 
 * Topologyビューから、Pod名を控えておきます。
 
-この後に、Tekton Pipelineを使って、新しくビルドされたイメージでこのDeployment[nationalparks]を更新するため、その際にPod名が変わることを確認します。
+Tekton Pipelineを使って、新しくビルドされたイメージでこのDeployment `nationalparks` を更新し、その際にPod名が変わることを確認します。
 ```
 (例) nationalparks-98876886f-cbkzc
 ```
@@ -116,11 +116,11 @@ oc get routes
 ## パイプラインで使うストレージを作成する
 OpenShiftは、永続ボリューム要求リクエスト(PVC)を介してアプリケーションを実行しているポッドに接続される永続ボリュームを使用してストレージを管理します。また、Webコンソールから簡単に管理する機能も提供します。
 
-* **管理者パースペクティブから、 [ストレージ] → [永続ボリューム要求]に移動します。**
-* **右上に移動し、[永続ボリューム要求の作成]ボタンをクリックします。**
-* **永続ボリュームクレーム名の中に`app-source-pvc`を挿入します。**
-* **RWOシングルユーザーアクセスモードを使用してパイプライン用に1GiB 永続ボリュームを作成するため、[サイズ]セクションに1を挿入します。**
-* **他のすべてのデフォルト設定をそのままにして、[作成]をクリックします。**
+* **Administratorパースペクティブから、 [Storage] → [PersistentVolumeClaim]に移動します。**
+* **右上に移動し、[Create PersistentVolumeClaim]ボタンをクリックします。**
+* **PersistentVolumeClaim Nameに `app-source-pvc`を入力します。**
+* **RWOシングルユーザーアクセスモードを使用してパイプライン用に1GiB 永続ボリュームを作成するため、[Size]セクションに `1` を入力します。**
+* **他のすべてのデフォルト設定をそのままにして、[Create]をクリックします。**
 
 ![PVC作成](./images/04_101_nationalparks-codechanges-pipeline-pvc.png)
 <div style="text-align: center;">PVC作成</div>
@@ -257,10 +257,10 @@ TaskとClusterTaskには、実行するステップが含まれています。Cl
 
     * **build-image**：これはbuildah ClusterTaskであり、OpenShiftの入力としてバイナリファイル（この場合は前のタスクで生成されたJARアーティファクト）を使用してイメージをビルドします。
 
-    * **redeploy**： ClusterTaskを使用して、前のラボで作成したopenshift-client名前のデプロイメントを使用して、OpenShiftに作成されたイメージをデプロイします。nationalparks
+    * **redeploy**： ClusterTaskを使用して、前のラボで作成したopenshift-client名前のデプロイメントを使用して、OpenShiftに作成されたイメージをデプロイします。
 
 
-* **左側のメニューから[パイプライン]をクリックし、次に[ nationalparks-pipeline ]をクリックして、作成したパイプラインを表示します。**
+* **Developerパースペクティブを表示し、左ペインの[Pipelines]をクリックし、次に `nationalparks-pipeline` をクリックして、作成したパイプラインを表示します。**
 
 ![nationalparks-pipeline](./images/04_100_devops-pipeline-created.png)
 <div style="text-align: center;">nationalparks-pipeline</div>
@@ -268,11 +268,11 @@ TaskとClusterTaskには、実行するステップが含まれています。Cl
 <br>
 
 * パイプラインは複数のパラメータがあり、使用する必要のあるものにデフォルト値があります。2つのワークスペースを使用しています：
-    * app-source ：以前に作成されたPersistentVolumeClaim にリンクされています。これは、別のタスクapp-source-pvcで使用されるアーティファクトを保存するために使用されます
+    * app-source ：以前に作成されたPersistentVolumeClaimにリンクされています。これは、別のタスクapp-source-pvcで使用されるアーティファクトを保存するために使用されます
     * maven-settings： Mavenキャッシュ用のEmptyDirボリューム。これをPVCで拡張して、後続のMavenビルドを高速化することもできます。
 
-* **Developer Perspective内で、左側のメニューに移動し、[ Pipeline ]をクリックしてから、 nationalparks-pipelineをクリックします。**
-* **右上の[アクション]リストから、[開始]をクリックします。**
+* **左ペインの [Pipelines]をクリックし、 `nationalparks-pipeline` をクリックします。**
+* **右上の[Actions]リストから、`Start` をクリックします。**
 
 ![nationalparks-pipeline2](./images/04_102_devops-pipeline-start-1.png)
 <div style="text-align: center;">nationalparks-pipeline2</div>
@@ -287,8 +287,8 @@ TaskとClusterTaskには、実行するステップが含まれています。Cl
   https://github.com/openshift-roadshow/nationalparks.git
   ```
 
-  * ワークスペース → app-sourceで、リストからPVCを選択し、次にapp-source-pvcを選択します。
-* [開始]をクリックして、パイプラインを実行します。
+  * "Workspaces → app-source" にてリストから `PersistentVolumeClaim` を選択し、次に `app-source-pvc` を選択します。
+* `Start` をクリックして、パイプラインを実行します。
 
 ![nationalparks-pipeline3](./images/04_103_devops-pipeline-start-2.png)
 <div style="text-align: center;">nationalparks-pipeline3</div>
@@ -297,9 +297,9 @@ TaskとClusterTaskには、実行するステップが含まれています。Cl
 
 ## パイプラインの確認
 * **Webコンソールからパイプラインの実行を簡単に追跡できます。**
-  * Developer Perspectiveを開き、左側のメニューに移動し、[ Pipeline ]をクリックしてから、 nationalparks-pipelineをクリックします。
+  * Developerパースペクティブの左ペインにて `Pipelines` をクリックし、 `nationalparks-pipeline` をクリックします。
 
-* **[パイプラインの実行]タブに切り替えて、進行中のすべてのステップを監視します。**
+* **[PipelineRuns] タブに切り替えて、進行中のすべてのステップを監視します。**
 
 ![Pipeline実行中](./images/04_104_devops-pipeline-run-1.png)
 <div style="text-align: center;">Pipeline実行中</div>
