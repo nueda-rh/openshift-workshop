@@ -59,7 +59,7 @@ Web コンソールの Developer パースペクティブでは、Add ビュー�
 
 
 ### アプリケーションの作成
-* **Add ビューで From Git をクリックし、Import from Git フォームを表示します。**
+* **Add ビューで `Import From Git` をクリックし、Import from Git フォームを表示します。**
 
 ![Developer パースペクティブ](./images/03_1_add_application_from_git.png)
 <div style="text-align: center;">Developer パースペクティブ</div>
@@ -78,7 +78,7 @@ https://github.com/sclorg/nodejs-ex.git
 
 <br>
 
-* **`インポートストラテジーの編集`をあえて選択し、適切なビルダーイメージが検出されているかを確認します。**
+* **`Edit Import Strategy` をあえて選択し、適切なビルダーイメージが検出されているかを確認します。**
     * **Builder セクション**で、URL の検証後に、自動的に選択されます（スターのマークが付きます）。
     * ビルダーイメージが自動検出されていない場合は、ビルダーイメージを選択します。必要に応じて、Builder Image Version のドロップダウンリストを使用してバージョンを変更できます。
 
@@ -168,12 +168,13 @@ Web コンソールのDeveloperパースペクティブにあるTopologyビュ�
     https://github.com/RedHatGov/openshift-workshops.git
     ```
 
-    * 詳細の Git オプションの表示 → コンテキストディレクトリー** を設定：
+    * "Show advanced Git options"を表示し、表示されたメニューから"Context dir"を設定します：
     ```
     /dc-metro-map
     ```
 
 * **その他の設定は変更せず、`Create` をクリックします。**
+
 ![openshift-workshopsアプリ](./images/03_3_import_from_git_form_url_setting.png)
 <div style="text-align: center;">openshift-workshopsアプリ</div>
 
@@ -191,7 +192,7 @@ Web コンソールのDeveloperパースペクティブにあるTopologyビュ�
 
 Red Hat は最近、モニタリング機能(Kibana)をWebコンソールに統合しました。プロジェクト全体のメトリクスとイベントについてはこちらからご覧ください。
 
-* 左側のパネルで **監視** をクリックします。
+* 左側のパネルで **Observe**をクリックします。
 
 ![Project作成](./images/03_1_developer_perspective_monitoring.png)
 <div style="text-align: center;"></div>
@@ -265,9 +266,9 @@ Administrator パースペクティブから確認します。
 ## OperatorHub から Operatorのインストール
 Administrator パースペクティブから確認します。
 
-### OpenShiftパイプラインのインストール
+### OpenShift Pipelineのインストール
 
-* **OpenShiftパイプラインをインストール**
+* **OpenShift Pipelineをインストール**
     * 管理者パースペクティブの下の左側のメニューから、Operators → OperatorHubに移動します。
     * 検索ボックスで`OpenShift Pipeline`を検索し、 表示された結果から`Red Hat OpenShift Pipelines`をクリックします。
 
@@ -276,21 +277,21 @@ Administrator パースペクティブから確認します。
 
 <br>
 
-* **説明ビューで、[インストール]をクリックして、すべてのインストール設定を確認します。**
+* **説明ビューで、`Install` をクリックして、すべてのインストール設定を確認します。**
 
 ![OperaterHub画面2](./images/03_101_prerequisites_operatorhub_install_pipelines.png)
 <div style="text-align: center;">OperaterHub画面2</div>
 
 <br>
 
-* **Update Channelがstableに設定されていることを確認し、 InstallをクリックしてOperatorのインストールを開始します。**
+* **Update Channelが `stable` に設定されていることを確認し、 `Install` をクリックしてOperatorのインストールを開始します。**
 
 ![OperaterHub画面3](./images/03_102_prerequisites_operatorhub_install_operator.png)
 <div style="text-align: center;">OperaterHub画面3</div>
 
 <br>
 
-* **数秒後、以下のような画面が表示され、インストールが正常に完了します。また、Installed Operatorsの画面の[Status]列を確認することで、インストールステータスが[成功]であるかどうかを確認できます。**
+* **数秒後、以下のような画面が表示され、インストールが正常に完了します。また、Installed Operatorsの画面の[Status]列を確認することで、インストールステータスが成功であるかどうかを確認できます。**
 
 ![OperaterHub画面4](./images/03_103_prerequisites_operatorhub_pipelines_installed.png)
 <div style="text-align: center;">OperaterHub画面4</div>
