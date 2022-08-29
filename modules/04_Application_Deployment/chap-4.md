@@ -23,10 +23,13 @@
 * **アプリケーションのビルド**
 
   * Developer パースペクティブで、左側のナビゲーションで[+Add]をクリックし、[Git Repository]セクションより `Import from Git` を選択します。
+  
   ![Developerパースペクティブ](./images/04_90_nationalparks-show-add-options.png)
   <div style="text-align: center;">Developerパースペクティブ</div>
   <br>
+  
   * Import from Gitワークフローは、いくつかの選択に基づいてアプリをデプロイするプロセスをガイドします。GitリポジトリのURLに次のように入力します。
+  
   ```
   https://github.com/openshift-roadshow/nationalparks.git
   ```
@@ -74,7 +77,7 @@
 <br>
 
 
-* ** `Create` をクリックして送信します。**
+* `Create` **をクリックして送信します。**
 
 * **トポロジビューでnationalparksエントリをクリックし、[Resources]タブの[Builds]セクションで[View logs]をクリックして、ビルドログを参照します。**
 
