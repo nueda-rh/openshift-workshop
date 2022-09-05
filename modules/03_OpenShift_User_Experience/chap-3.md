@@ -236,15 +236,6 @@ Administrator パースペクティブから確認します。
     > 該当のアプリケーションでは、Readiness Probe/Liveness Probesが設定されていません。
     > 詳細な利用法は[こちら](https://developers.redhat.com/blog/2020/11/10/you-probably-need-liveness-and-readiness-probes#what_about_identical_liveness_and_a_readiness_probes_)の情報を参考にしてみてください。
 
-
-    * アプリケーションコンテナの *Resource Requests* と *Resource Limits* を確認します。
-
-    > NOTE:
-    > 
-    > 該当のアプリケーションでは、Resource Request/Resource Limitsが設定されていません。
-    > 詳細な利用法は[こちら](https://developers.redhat.com/blog/2020/02/05/customizing-openshift-project-creation#customize_the_template)の情報を参考にしてみてください。
-
-
 * ***メトリクス* タブ を参照する**
     * メモリ、CPU などリソースの使用量が表示されます。
     ![](./images/03_1_admin_pod_details.png)
