@@ -18,7 +18,7 @@
 
 * **プロジェクトの作成**
   
-  *Name* を `<英字氏名>-workshop` として、プロジェクトを作成します。 例）`yamadataro-workshop`
+  *Name* を `<英字氏名>-workshop` として、プロジェクトを作成します。 例） `yamadataro-workshop`
 
   * プロジェクト名はOpenShiftクラスタ内で一意である必要があります。
 

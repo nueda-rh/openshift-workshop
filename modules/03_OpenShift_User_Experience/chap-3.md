@@ -41,9 +41,9 @@ OpenShift Container PlatformのWebコンソールには、Administrator パー�
 >
 > 異なるプロジェクトはそれぞれに対応した異なるユーザー権限とクォータを持つことができます
 
-* *Name* を `<英字氏名>-test` として、プロジェクトを作成します。 例）`yamadataro-test`
+* *Name* を `<英字氏名>-test` として、プロジェクトを作成します。 例） `yamadataro-test`
 
-    プロジェクトが`<英字氏名>-test` に切り替わったことを確認します。
+    プロジェクトが `<英字氏名>-test` に切り替わったことを確認します。
 
    　プロジェクト名はOpenShiftクラスタ内で一意である必要があります。
 
