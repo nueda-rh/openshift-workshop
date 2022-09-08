@@ -41,9 +41,11 @@ OpenShift Container PlatformのWebコンソールには、Administrator パー�
 >
 > 異なるプロジェクトはそれぞれに対応した異なるユーザー権限とクォータを持つことができます
 
-* **Name を `test` として、プロジェクトを作成します。**
+* *Name* を `<英字氏名>-test` として、プロジェクトを作成します。 例）`yamadataro-test`
 
-    プロジェクトが`test` に切り替わったことを確認します。
+    プロジェクトが`<英字氏名>-test` に切り替わったことを確認します。
+
+   　プロジェクト名はOpenShiftクラスタ内で一意である必要があります。
 
 
 ---
@@ -131,14 +133,13 @@ Web コンソールのDeveloperパースペクティブにあるTopologyビュ�
 
 以下のように、異なるタイプのリソースオブジェクトのインジケーターと共に、アプリケーションリソース名が追加されます。
 
-```
-*D*: Deployment
-*DC*: Deployment Configs
-*SS*: StatefulSet
-*DS*: Daemonset
-```
 
-* **アプリケーションの中心のロゴをクリックすると、右側から詳細画面が表示され、関連するリソースを閲覧することができます。**
+* *D*: Deployment
+* *DC*: Deployment Configs
+* *SS*: StatefulSet
+* *DS*: Daemonset
+
+**アプリケーションの中心のロゴをクリックすると、右側から詳細画面が表示され、関連するリソースを閲覧することができます。**
 
 ![Project作成](./images/03_2_topology_nodejs_pod_running.png)
 <div style="text-align: center;"></div>
@@ -260,7 +261,7 @@ Administrator パースペクティブから確認します。
 ### OpenShift Pipelineのインストール
 
 * **OpenShift Pipelineをインストール**
-    * 管理者パースペクティブの下の左側のメニューから、Operators → OperatorHubに移動します。
+    * Administratorパースペクティブの下の左側のメニューから、Operators → OperatorHubに移動します。
     * 検索ボックスで`OpenShift Pipeline`を検索し、 表示された結果から`Red Hat OpenShift Pipelines`をクリックします。
 
 ![OperaterHub画面1](./images/03_100_prerequisites_operatorhub.png)
