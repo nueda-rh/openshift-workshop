@@ -150,6 +150,10 @@ https://github.com/sclorg/nodejs-ex.git
 
 <br>
 
+> NOTE:
+> 
+> アイコンの緑のチェックにマウスを合わせると、`ビルド Complete` と表示され、ビルドが完了していることが分かります。また、右上の四角と矢印のアイコン `URL を開く`は、アプリケーションに接続するためのへのリンクが提供されています。`Github のキャラクター オクトキャット` をクリックすると、Github でソースコードの編集を行う事が出来ます。  
+> 
 * **Route からアプリケーションにアクセスしてみてください。**
 
 ![nodejs-ex アプリ](./images/03_2_import_from_git_form_url_result.png)
