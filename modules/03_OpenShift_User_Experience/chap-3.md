@@ -105,13 +105,15 @@ https://github.com/sclorg/nodejs-ex.git
 
 . *説明*: Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
 +
-image:images/03_1_topology_view_a.png[]
+![Topology ビュー](./images/03_1_topology_view_a.png)
+<div style="text-align: center;">Topology ビュー</div>
 +
 [NOTE]
 ====
 *操作*: グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。
 
-image:images/03_1_topology_view_switch_view.png[width=50%]
+![Topology ビューの切り替え](./images/03_1_topology_view_switch_view.png)
+<div style="text-align: center;">Topology ビューの切り替え</div>
 ====
 +
 . *説明*: Developer パースペクティブの左側のナビゲーションパネルを使用すると、Topology ビューに移動できます。アプリケーションを作成したら、Topology ビューに自動的に移動します。ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。
