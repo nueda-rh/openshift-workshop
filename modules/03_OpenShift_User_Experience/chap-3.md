@@ -109,6 +109,8 @@ https://github.com/sclorg/nodejs-ex.git
 <div style="text-align: center;">Topology ビュー</div>
 
 <br>
++
+[NOTE]
 
 * **アプリケーションを作成したら、Topology ビューに自動的に移動します。**
 
@@ -119,7 +121,7 @@ https://github.com/sclorg/nodejs-ex.git
 
 ![Topology ビューの切り替え](./images/03_1_topology_view_switch_view.png)
 <div style="text-align: center;">Topology ビューの切り替え</div>
-
++
 <br>
 
 2. Developer パースペクティブの左側のナビゲーションパネルを使用すると、Topology ビューに移動できます。アプリケーションを作成したら、Topology ビューに自動的に移動します。ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。  
