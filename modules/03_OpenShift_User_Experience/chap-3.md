@@ -103,27 +103,27 @@ https://github.com/sclorg/nodejs-ex.git
 
 ## Topology ビュー
 
-Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
+1. Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
 
 ![Topology ビュー](./images/03_1_topology_view_a.png)
 <div style="text-align: center;">Topology ビュー</div>
 
 <br>
 
-* **アプリケーションを作成したら、Topology ビューに自動的に移動します。**
-
-    * ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。
-    * ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。
-
-    * グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。
+> NOTE:
+> 
+> * **アプリケーションを作成したら、Topology ビューに自動的に移動します。**
+>
+>    * ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。
+>    * ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。
+>
+>    * グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。（下記参照）
 
 ![Topology ビューの切り替え](./images/03_1_topology_view_switch_view.png)
 <div style="text-align: center;">Topology ビューの切り替え</div>
-
 <br>
 
-アプリケーションをビルドすると、Runningと表示されます。
-
+2. アプリケーションをビルドすると、Runningと表示されます。  
 <div align="center">
 <img src="./images/03_1_topology_nodejs_pod_running.png" width=50%>
 </div>
@@ -139,6 +139,10 @@ Web コンソールのDeveloperパースペクティブにあるTopologyビュ�
 * *SS*: StatefulSet
 * *DS*: Daemonset
 
+
+注: OpenShift Deployment Configsに加えて、Kubernetes _Deployments_ もサポートされていることに注意します。 Kubernetes Deploymentは、Deployment Configs で利用可能な機能の多くを共有しており、OpenShift Container Platform 4.5からはデフォルトのデプロイメントリソースオブジェクトとなっています。
+
+
 **アプリケーションの中心のロゴをクリックすると、右側から詳細画面が表示され、関連するリソースを閲覧することができます。**
 
 ![Project作成](./images/03_2_topology_nodejs_pod_running.png)
@@ -146,7 +150,13 @@ Web コンソールのDeveloperパースペクティブにあるTopologyビュ�
 
 <br>
 
-* **Route からアプリケーションにアクセスしてみてください。**
+> NOTE:
+> 
+> アイコンの緑のチェックにマウスを合わせると、`ビルド Complete` と表示され、ビルドが完了していることが分かります。また、右上の四角と矢印のアイコン `URL を開く`は、アプリケーションに接続するためのへのリンクが提供されています。`Github のキャラクター オクトキャット` をクリックすると、Github でソースコードの編集を行う事が出来ます。  
+> 右ペインの詳細 (Delailes) タブに表示されている青い円の横にある上や下の矢印を押すと、Pod の数の増減が出来ます。簡単にスケールアップ、スケールダウンが出来るオペレーション是非試してみてください。
+
+
+* **右上の `URL を開く` アイコンをクリックして、アプリケーションのルートにアクセスしてみてください。**
 
 ![nodejs-ex アプリ](./images/03_2_import_from_git_form_url_result.png)
 <div style="text-align: center;">nodejs-ex アプリ</div>
@@ -276,9 +286,9 @@ Administrator パースペクティブから確認します。
 
 <br>
 
-* **Update Channelが `stable` に設定されていることを確認し、 `Install` をクリックしてOperatorのインストールを開始します。**
+* **Update Channelが `pipelines-1.8` に設定されていることを確認し、 `Install` をクリックしてOperatorのインストールを開始します。**
 
-![OperaterHub画面3](./images/03_102_prerequisites_operatorhub_install_operator.png)
+![OperaterHub画面3](./images/03_102_prerequisites_operatorhub_install_operator2.png)
 <div style="text-align: center;">OperaterHub画面3</div>
 
 <br>
