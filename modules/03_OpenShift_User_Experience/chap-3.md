@@ -103,45 +103,32 @@ https://github.com/sclorg/nodejs-ex.git
 
 === Topology ビュー
 
-. Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
-
-![Topology ビュー](./images/03_1_topology_view_a.png)
-<div style="text-align: center;">Topology ビュー</div>
-
-<br>
+. *説明*: Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
++
+image:images/03_1_topology_view_a.png[]
++
 [NOTE]
 ====
-グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。
-    
+*操作*: グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。
 
-![Topology ビューの切り替え](./images/03_1_topology_view_switch_view.png)
-<div style="text-align: center;">Topology ビューの切り替え</div>
+image:images/03_1_topology_view_switch_view.png[width=50%]
 ====
-<br>
-
-アプリケーションをビルドすると、Runningと表示されます。
-
-<div align="center">
-<img src="./images/03_1_topology_nodejs_pod_running.png" width=50%>
-</div>
-<div style="text-align: center;">Running</div>
-
-<br>
-
 +
 . *説明*: Developer パースペクティブの左側のナビゲーションパネルを使用すると、Topology ビューに移動できます。アプリケーションを作成したら、Topology ビューに自動的に移動します。ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。
 . *説明*: Podの状態やフェーズは、色で区別され、ツールチップで次のように表示されます。Running (image:images/03_1_pod_running.png[]), Not Ready (image:images/03_1_pod_not_ready.png[]), Warning (image:images/03_1_pod_warning.png[])、Failed(image:images/03_1_pod_failed.png[])、Pending (image:images/03_1_pod_pending.png[])、Succeeded(image:images/03_1_pod_succeeded.png[])、Terminating(image:images/03_1_pod_terminating.png[])、またはUnknown(image:images/03_1_pod_unknown.png[])のいずれかになります。 Podの状態の詳細については、Kubernetesのドキュメントを参照してください。
 
 . *説明*: アプリケーションを作成し、イメージがデプロイされると、ステータスは Pending と表示されます。アプリケーションをビルドすると、Runningと表示されます。
 +
+image:images/03_1_topology_nodejs_pod_running.png[width=50%]
 
-以下のように、異なるタイプのリソースオブジェクトのインジケーターと共に、アプリケーションリソース名が追加されます。
+* 以下のように、異なるタイプのリソースオブジェクトのインジケーターと共に、アプリケーションリソース名が追加されます。
+** *D*: Deployment
+** *DC*: Deployment Configs
+** *SS*: StatefulSet
+** *DS*: Daemonset
 
+注: OpenShift Deployment Configsに加えて、Kubernetes _Deployments_ もサポートされていることに注意します。 Kubernetes Deploymentは、Deployment Configs で利用可能な機能の多くを共有しており、OpenShift Container Platform 4.5からはデフォルトのデプロイメントリソースオブジェクトとなっています。
 
-* *D*: Deployment
-* *DC*: Deployment Configs
-* *SS*: StatefulSet
-* *DS*: Daemonset
 
 **アプリケーションの中心のロゴをクリックすると、右側から詳細画面が表示され、関連するリソースを閲覧することができます。**
 
