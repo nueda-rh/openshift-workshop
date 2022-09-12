@@ -123,7 +123,7 @@ https://github.com/sclorg/nodejs-ex.git
 <br>
 
 2. Developer パースペクティブの左側のナビゲーションパネルを使用すると、Topology ビューに移動できます。アプリケーションを作成したら、Topology ビューに自動的に移動します。ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。  
-3. Podの状態やフェーズは、色で区別され、ツールチップで次のように表示されます。Running (./images/03_1_topology_view_switch_view.png), Not Ready (image:images/03_1_pod_not_ready.png[]), Warning (image:images/03_1_pod_warning.png[])、Failed(image:images/03_1_pod_failed.png[])、Pending (image:images/03_1_pod_pending.png[])、Succeeded(image:images/03_1_pod_succeeded.png[])、Terminating(image:images/03_1_pod_terminating.png[])、またはUnknown(image:images/03_1_pod_unknown.png[])のいずれかになります。 Podの状態の詳細については、Kubernetesのドキュメントを参照してください。  
+3. Podの状態やフェーズは、色で区別され、ツールチップで次のように表示されます。Running (image:images/03_1_pod_failed.png[]), Not Ready (image:images/03_1_pod_not_ready.png[]), Warning (image:images/03_1_pod_warning.png[])、Failed(image:images/03_1_pod_failed.png[])、Pending (image:images/03_1_pod_pending.png[])、Succeeded(image:images/03_1_pod_succeeded.png[])、Terminating(image:images/03_1_pod_terminating.png[])、またはUnknown(image:images/03_1_pod_unknown.png[])のいずれかになります。 Podの状態の詳細については、Kubernetesのドキュメントを参照してください。  
 4. アプリケーションをビルドすると、Runningと表示されます。  
 <div align="center">
 <img src="./images/03_1_topology_nodejs_pod_running.png" width=50%>
