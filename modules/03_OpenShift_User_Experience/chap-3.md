@@ -109,6 +109,7 @@ https://github.com/sclorg/nodejs-ex.git
 <div style="text-align: center;">Topology ビュー</div>
 
 <br>
+
  * **アプリケーションを作成したら、Topology ビューに自動的に移動します。**
 
     * ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。
