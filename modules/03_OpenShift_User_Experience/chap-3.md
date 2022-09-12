@@ -286,7 +286,7 @@ Administrator パースペクティブから確認します。
 
 <br>
 
-* **Update Channelが `stable` に設定されていることを確認し、 `Install` をクリックしてOperatorのインストールを開始します。**
+* **Update Channelが `pipelines-1.8` に設定されていることを確認し、 `Install` をクリックしてOperatorのインストールを開始します。**
 
 ![OperaterHub画面3](./images/03_102_prerequisites_operatorhub_install_operator2.png)
 <div style="text-align: center;">OperaterHub画面3</div>
