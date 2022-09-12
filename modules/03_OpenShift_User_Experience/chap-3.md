@@ -111,7 +111,7 @@ https://github.com/sclorg/nodejs-ex.git
 <br>
 +
 [NOTE]
-
+===
 * **アプリケーションを作成したら、Topology ビューに自動的に移動します。**
 
     * ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。
@@ -121,6 +121,7 @@ https://github.com/sclorg/nodejs-ex.git
 
 ![Topology ビューの切り替え](./images/03_1_topology_view_switch_view.png)
 <div style="text-align: center;">Topology ビューの切り替え</div>
+===
 +
 <br>
 
