@@ -101,16 +101,18 @@ https://github.com/sclorg/nodejs-ex.git
 >
 > Knative Service オプションは、Serverless Operator がクラスターにインストールされている場合にのみ、Import from git 形式で表示されます。
 
-## Topology ビュー
+=== Topology ビュー
 
-Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
+. Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
 
 ![Topology ビュー](./images/03_1_topology_view_a.png)
 <div style="text-align: center;">Topology ビュー</div>
 
 <br>
-
-    * グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。
+[NOTE]
+====
+グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。
+    
 
 ![Topology ビューの切り替え](./images/03_1_topology_view_switch_view.png)
 <div style="text-align: center;">Topology ビューの切り替え</div>
