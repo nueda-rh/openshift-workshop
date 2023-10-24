@@ -130,7 +130,7 @@ https://github.com/sclorg/nodejs-ex.git
 
 2. アプリケーションをビルドすると、Runningと表示されます。  
 <div align="center">
-<img src="./images/03_1_topology_nodejs_pod_running.png" width=50%>
+<img src="./images/03_1_topology_nodejs_pod_running.png">
 </div>
 <div style="text-align: center;">Running</div>
 
