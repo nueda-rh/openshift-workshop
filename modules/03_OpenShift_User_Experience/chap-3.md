@@ -11,23 +11,23 @@
 また、OperatorHub から Operator をインストールします。
 
 ### ゴール
-* Web コンソールのパースペクティブ(DeveloperとAdministrator)を理解
+* Web コンソールのパースペクティブ(管理者向け表示と開発者)を理解
 * Gitリポジトリからアプリケーションをビルドしてデプロイ
 * デプロイしたアプリを、ウェブコンソールのトポロジービューを通して確認
 * OperatorHub から Operator をインストール
 
 
 ---
-## Developer パースペクティブ
+## 開発者パースペクティブ
 
-OpenShift Container PlatformのWebコンソールには、Administrator パースペクティブとDeveloperパースペクティブの2つのパースペクティブがあります。Developerパースペクティブでは、開発者のユースケースに特化したワークフローを提供します。
+OpenShift Container PlatformのWebコンソールには、管理者向け表示と開発者の2つのパースペクティブがあります。開発者パースペクティブでは、開発者のユースケースに特化したワークフローを提供します。
 
-* **Developerパースペクティブに切り替えます。**
+* **開発者パースペクティブに切り替えます。**
 
-    アプリケーションを作成するためのオプションを持つTopologyビューが表示されます。
+    アプリケーションを作成するためのオプションを持つトポロジービューが表示されます。
 
-![Developerパースペクティブ](./images/03_1_developer_perspective.png)
-<div style="text-align: center;">Developerパースペクティブ</div>
+![開発者パースペクティブ](./images/03_1_developer_perspective.png)
+<div style="text-align: center;">開発者パースペクティブ</div>
 
 <br>
 
@@ -56,20 +56,20 @@ OpenShift Container PlatformのWebコンソールには、Administrator パー�
 ---
 ## アプリケーションデプロイメント
 
-Web コンソールの Developer パースペクティブでは、Add ビューからアプリケーションおよび関連サービスを作成できます。OpenShift Container Platform にデプロイするためにはいくつかのオプションがあります（例 Dockerfile、Git、Catalog、YAMLなど）。
+Web コンソールの 開発者パースペクティブでは、追加ビューからアプリケーションおよび関連サービスを作成できます。OpenShift Container Platform にデプロイするためにはいくつかのオプションがあります（例 Dockerfile、Git、Catalog、YAMLなど）。
 
 * *Devfile*：これはDevfilev2仕様を使用してアプリケーションスタックを作成します。devfile.yamlリポジトリには、Devfilev2形式で名前が付けられたファイルが含まれている必要があります。
 * *Dockerfile*：これにより、既存のDockerfileからコンテナイメージが作成されます。
 * *ビルダーイメージ*：これは、Source-to-Imageと呼ばれるメカニズムを使用して、ソースコードから直接コンテナーイメージを自動的に作成します。
 
-本手順では、GitHub にある既存のコードベースを利用して、OpenShift Container Platform上でアプリケーションを作成、構築、デプロイします。Developerパースペクティブでアプリケーションを作成するための *Import from git* オプションを使います。 
+本手順では、GitHub にある既存のコードベースを利用して、OpenShift Container Platform上でアプリケーションを作成、構築、デプロイします。開発者パースペクティブでアプリケーションを作成するための *Gitからのインポート* オプションを使います。 
 
 
 ### アプリケーションの作成
-* **Add ビューで `Import From Git` をクリックし、Import from Git フォームを表示します。**
+* **追加で `Gitからのインポート` をクリックし、Git フォームを表示します。**
 
-![Developer パースペクティブ](./images/03_1_add_application_from_git.png)
-<div style="text-align: center;">Developer パースペクティブ</div>
+![開発者パースペクティブ](./images/03_1_add_application_from_git.png)
+<div style="text-align: center;">開発者パースペクティブ</div>
 
 <br>
 
@@ -80,19 +80,19 @@ Web コンソールの Developer パースペクティブでは、Add ビュー�
 https://github.com/sclorg/nodejs-ex.git
 ```
 
-![Import from git](./images/03_1_import_from_git_form_url.png)
-<div style="text-align: center;">Import from git</div>
+![Gitからのインポート](./images/03_1_import_from_git_form_url.png)
+<div style="text-align: center;">Gitからのインポート</div>
 
 <br>
 
-* **`Edit Import Strategy` をあえて選択し、適切なビルダーイメージが検出されているかを確認します。**
+* **`インポートストラテジーの編集` をあえて選択し、適切なビルダーイメージが検出されているかを確認します。**
     * **Builder セクション**で、URL の検証後に、自動的に選択されます（スターのマークが付きます）。
-    * ビルダーイメージが自動検出されていない場合は、ビルダーイメージを選択します。必要に応じて、Builder Image Version のドロップダウンリストを使用してバージョンを変更できます。
+    * ビルダーイメージが自動検出されていない場合は、ビルダーイメージを選択します。必要に応じて、ビルダーイメージのバージョン のドロップダウンリストを使用してバージョンを変更できます。
 
 * **General セクションで、以下を確認します（特に変更不要です）。**
 
-    * **Application** ：アプリケーションを分類するために一意の名前 (nodejs-ex-app など) を入力します。
-    * **Name** ：このアプリケーション用に作成されたリソースを分類するために一意な名前を入力します。これは Git リポジトリー URL をベースとして自動的に設定されます。
+    * **アプリケーション名** ：アプリケーションを分類するために一意の名前 (nodejs-ex-app など) を入力します。
+    * **名前** ：このアプリケーション用に作成されたリソースを分類するために一意な名前を入力します。これは Git リポジトリー URL をベースとして自動的に設定されます。
 
 * **Resources セクションで、デフォルトのリソース `Deployment` を選択します** 
 
@@ -100,32 +100,32 @@ https://github.com/sclorg/nodejs-ex.git
 > 
 > OpenShift Deployment Configsに加えて、Kubernetes _Deployments_ もサポートされています。
 
-* **その他の設定は変更せず、`Create` をクリックします。**
+* **その他の設定は変更せず、`作成済み` をクリックします。**
 
 > NOTE :
 >
-> Knative Service オプションは、Serverless Operator がクラスターにインストールされている場合にのみ、Import from git 形式で表示されます。
+> Knative Service オプションは、Serverless Operator がクラスターにインストールされている場合にのみ、Gitからのインポート 形式で表示されます。
 
-## Topology ビュー
+## トポロジービュー
 
-1. Web コンソールのDeveloperパースペクティブにあるTopologyビューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
+1. Web コンソールの開発者パースペクティブにあるトポロジービューでは、プロジェクト内のすべてのアプリケーション、そのビルドステータス、およびそれらに関連するコンポーネントとサービスを視覚的に表示します。
 
-![Topology ビュー](./images/03_1_topology_view_a.png)
-<div style="text-align: center;">Topology ビュー</div>
+![トポロジービュー](./images/03_1_topology_view_a.png)
+<div style="text-align: center;">トポロジービュー</div>
 
 <br>
 
 > NOTE:
 > 
-> * **アプリケーションを作成したら、Topology ビューに自動的に移動します。**
+> * **アプリケーションを作成したら、トポロジービューに自動的に移動します。**
 >
 >    * ここでは、アプリケーション Pod のステータスの確認、パブリック URL でのアプリケーションへの迅速なアクセス、ソースコードへのアクセスとその変更、最終ビルドのステータスの確認ができます。
 >    * ズームインおよびズームアウトにより、特定のアプリケーションの詳細を表示することができます。
 >
->    * グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「Topologyビュー」アイコンをクリックします。（下記参照）
+>    * グラフィカルな表示が表示されない場合は、Web コンソールの右上にある「トポロジー」アイコンをクリックします。（下記参照）
 
-![Topology ビューの切り替え](./images/03_1_topology_view_switch_view.png)
-<div style="text-align: center;">Topology ビューの切り替え</div>
+![トポロジービューの切り替え](./images/03_1_topology_view_switch_view.png)
+<div style="text-align: center;">トポロジービューの切り替え</div>
 <br>
 
 2. アプリケーションをビルドすると、Runningと表示されます。  
@@ -161,7 +161,7 @@ https://github.com/sclorg/nodejs-ex.git
 > 右ペインの詳細 (Delailes) タブに表示されている青い円の横にある上や下の矢印を押すと、Pod の数の増減が出来ます。簡単にスケールアップ、スケールダウンが出来るオペレーション是非試してみてください。
 
 
-* **右上の `URL を開く` アイコンをクリックして、アプリケーションのルートにアクセスしてみてください。**
+* **Deploymentの円の右上の `URL を開く` (四角と矢印)アイコンをクリックして、アプリケーションのルートにアクセスしてみてください。**
 
 ![nodejs-ex アプリ](./images/03_2_import_from_git_form_url_result.png)
 <div style="text-align: center;">nodejs-ex アプリ</div>
@@ -170,7 +170,7 @@ https://github.com/sclorg/nodejs-ex.git
 
 > NOTE :
 >
-> Advanced Options セクションでは、**Create a route to the application** がデフォルトで選択されるため、公開されている URL を使用してアプリケーションにアクセスできます。
+> 詳細オプションセクションでは、**アプリケーションのルートを作成する** がデフォルトで選択されるため、公開されている URL を使用してアプリケーションにアクセスできます。
 > アプリケーションをパブリックルートに公開したくない場合は、チェックボックスをクリアできます。
 
 ---
@@ -189,14 +189,14 @@ https://github.com/sclorg/nodejs-ex.git
     /dc-metro-map
     ```
 
-* **その他の設定は変更せず、`Create` をクリックします。**
+* **その他の設定は変更せず、`作成済み` をクリックします。**
 
 ![openshift-workshopsアプリ](./images/03_3_import_from_git_form_url_setting.png)
 <div style="text-align: center;">openshift-workshopsアプリ</div>
 
 <br>
 
-* **Route からアプリケーションにアクセスしてみてください。**
+* **ルート（URLを開く）からアプリケーションにアクセスしてみてください。**
 
 ![openshift-workshopsアプリ](./images/03_3_import_from_git_form_url.png)
 <div style="text-align: center;">openshift-workshopsアプリ</div>
@@ -206,32 +206,32 @@ https://github.com/sclorg/nodejs-ex.git
 
 ## Monitoring ビューの確認 (OpenShift Monitoring)
 
-Red Hat は最近、モニタリング機能(Kibana)をWebコンソールに統合しました。プロジェクト全体のメトリクスとイベントについてはこちらからご覧ください。
+Red Hat は、モニタリング機能をWebコンソールに統合しています。プロジェクト全体のメトリクスとイベントについてはこちらからご覧ください。
 
-* 左側のパネルで **Observe**をクリックします。
+* 左側のパネルで **モニタリング**をクリックします。
 
 ![Project作成](./images/03_1_developer_perspective_monitoring.png)
 <div style="text-align: center;"></div>
 
 <br>
 
-* *Dashboard* タブ 
+* *ダッシュボード* タブ 
 
-    Dashboardタブは、プロジェクトのメトリクスをまとめて表示します。
+    ダッシュボードタブは、プロジェクトのメトリクスをまとめて表示します。
 
-* *Metrics* タブ 
+* *メトリックス* タブ 
 
-    Metricsタブは、Prometheus Metricsのカスタムグラフを作成することができます。
+    メトリクスタブは、Prometheus Metricsのカスタムグラフを作成することができます。
 
-* *Events* タブ 
+* *イベント* タブ 
 
-    Eventsタブは、報告されたイベントが一つのストリームとして表示され、フィルターできます。
+    イベントタブは、報告されたイベントが一つのストリームとして表示され、フィルターできます。
 
 
 ---
 ## Pod の確認 (Readiness Probe / Liveness Probes)
 
-Administrator パースペクティブから確認します。
+管理者向け表示から確認します。
 
 * **左側のメニューから、 *Workloads -> Pods* を選びます**
     * プロジェクトの *Pods* ページは、プロジェクトの中で現在実行中の全てのPodを表示します。
@@ -260,23 +260,23 @@ Administrator パースペクティブから確認します。
 <br>
 
 * **そのほか、各タブを見ていきます。**
-    * *Logs* タブ 
+    * *ログ* タブ 
         * Podのメッセージはここに表示され、更新されるにしたがって追跡することができます。
         * 更新によるログの出力を一時停止および再開することができます。
 
-    * *Terminal* タブ 
+    * *ターミナル* タブ 
         * デバッグやテストのためにコンテナ内でコマンドを実行することができます。
 
-    * *Events* タブ 
+    * *イベント* タブ 
         * このリストはPodのDeploymentで何かがおかしいかを探したり、イベントの連鎖を追跡したりするために使えます。
 
 ## OperatorHub から Operatorのインストール
-Administrator パースペクティブから確認します。
+管理者向け表示から確認します。
 
 ### OpenShift Pipelineのインストール
 
 * **OpenShift Pipelineをインストール**
-    * Administratorパースペクティブの下の左側のメニューから、Operators → OperatorHubに移動します。
+    * 管理者向け表示の下の左側のメニューから、Operator → OperatorHubに移動します。
     * 検索ボックスで`OpenShift Pipeline`を検索し、 表示された結果から`Red Hat OpenShift Pipelines`をクリックします。
 
 ![OperaterHub画面1](./images/03_100_prerequisites_operatorhub.png)
@@ -284,21 +284,21 @@ Administrator パースペクティブから確認します。
 
 <br>
 
-* **説明ビューで、`Install` をクリックして、すべてのインストール設定を確認します。**
+* **説明ビューで、`インストール` をクリックして、すべてのインストール設定を確認します。**
 
-![OperaterHub画面2](./images/03_101_prerequisites_operatorhub_install_pipelines.png)
+![OperaterHub画面2](./images/03_101_prerequisites_operatorhub_インストール_pipelines.png)
 <div style="text-align: center;">OperaterHub画面2</div>
 
 <br>
 
-* **Update Channelが `pipelines-1.8` に設定されていることを確認し、 `Install` をクリックしてOperatorのインストールを開始します。**
+* **Update Channelが `latest` に設定されていることを確認し、 `インストール` をクリックしてOperatorのインストールを開始します。**
 
 ![OperaterHub画面3](./images/03_102_prerequisites_operatorhub_install_operator2.png)
 <div style="text-align: center;">OperaterHub画面3</div>
 
 <br>
 
-* **数秒後、以下のような画面が表示され、インストールが正常に完了します。また、Installed Operatorsの画面の[Status]列を確認することで、インストールステータスが成功であるかどうかを確認できます。**
+* **数秒後、以下のような画面が表示され、インストールが正常に完了します。また、インストール済みのOperatorの画面の[Status]列を確認することで、インストールステータスが成功であるかどうかを確認できます。**
 
 ![OperaterHub画面4](./images/03_103_prerequisites_operatorhub_pipelines_installed.png)
 <div style="text-align: center;">OperaterHub画面4</div>
@@ -309,3 +309,7 @@ Administrator パースペクティブから確認します。
 ## 追加のデモ （オプション）
 
 興味のある Operator をインストールしてみてください（OpenShift Logging などなど）。
+
+* [イントロダクション](../../README.md)
+* [OpenShift ユーザエクスペリエンス](../../modules/03_OpenShift_User_Experience/chap-3.md)
+* [アプリケーションデプロイメント (s2i,Tekton)](../../modules/04_Application_Deployment/chap-4.md)
