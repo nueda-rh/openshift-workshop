@@ -347,7 +347,7 @@ Pipeline実行後
 
 <br>
 
-* **トポロジービューのDeploymentをクリックし、モニタリングのタブで、Podが入れ替わっていることでも確認できます。**
+* **トポロジービューのDeployment（青い円の内側）をクリックし、モニタリングのタブで、Podが入れ替わっていることでも確認できます。**
 
 ![Pipeline完了確認1](./images/04_108_devops-pipeline-complete-java-1.png)
 <div style="text-align: center;">Pipeline完了確認1</div>
