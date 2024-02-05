@@ -184,7 +184,7 @@ https://github.com/sclorg/nodejs-ex.git
     https://github.com/RedHatGov/openshift-workshops.git
     ```
 
-    * "Show advanced Git options"を表示し、表示されたメニューから"Context dir"を設定します：
+    * "詳細のGitオプションの表示"をクリックし、表示されたメニューから"コンテキストディレクトリー"を設定します：
     ```
     /dc-metro-map
     ```
